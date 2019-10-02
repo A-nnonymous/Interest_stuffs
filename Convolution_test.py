@@ -57,16 +57,17 @@ def main(name, save=False, discrete=True):
     print('Convolution Core:', core)
     newimg = convolution(img, core, frame,discrete)
     print(newimg.shape)
-
-    plt.figure(figsize=(16, 9), dpi=120)
+    H, W, C =newimg.shape
+    H, W = H/120, W/120
+    plt.figure(figsize=(W, H), dpi=120)
     plt.axes([0., 0., 1., 1.], frameon=False, xticks=[], yticks=[])
     plt.imshow(newimg)
     plt.axis('off')
     if save:
-        plt.savefig('./output/' + str(name) + '_processed' + '.png', dpi=120, transparent=True)
+        plt.savefig('./output/' + str(name) + '_processed' + '.png',  transparent=True)
         print("Picture saved as :"+'./output/' + str(name) + '_processed' + '.png')
     plt.show()
 
 
 if __name__ == '__main__':
-    main(4, save=True)
+    main(5, save=True)
